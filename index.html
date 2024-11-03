@@ -7,30 +7,33 @@
         * {
             box-sizing: border-box;
         }
-        
+
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Jhenghei", sans-serif;
+            background: linear-gradient(to bottom right, #f3f4f6, #e2e8f0);
+            color: #333;
         }
-        
+
         .panel {
-            color: rgb(51, 51, 51);
-            font-weight: 100;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .description {
-            text-align: center;
-            font-size: 1em;
-            font-weight: 500;
-            line-height: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 0.9em;
+            font-weight: 400;
+            margin: 20px 0;
+            color: #555;
         }
-        
+
         .wechat-group {
-            text-align: center;
             padding-bottom: 10px;
         }
-        
+
         .wechat-group img {
             max-width: 220px;
             height: auto;
@@ -38,13 +41,43 @@
             margin: 0 auto;
             width: 100%;
         }
-        
+
         .welcome-img img {
             width: 100%;
         }
-        
+
         .bg-gradient-primary {
             border-radius: 8px;
+            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            color: white;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-outline-primary {
+            background-color: transparent;
+            border: 2px solid #007bff;
+            color: #007bff;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: #007bff;
+            color: white;
         }
     </style>
 </head>
@@ -63,10 +96,10 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <span>
-                            <a href="https://ys.mihoyo.com/" target="_blank" class="btn btn-lg btn-primary rounded-pill mx-1">马上<span>使用</span></a>
+                            <a href="https://ys.mihoyo.com/" target="_blank" class="btn btn-lg btn-primary mx-1">马上<span>使用</span></a>
                         </span>
                         <span>
-                            <a href="https://qm.qq.com/q/oDE8zMTOdG" class="btn btn-lg btn-outline-primary rounded-pill mx-1">联系我们</a>
+                            <a href="https://qm.qq.com/q/oDE8zMTOdG" class="btn btn-lg btn-outline-primary mx-1">联系我们</a>
                         </span>
                     </div>
                     <div class="row mt-10">
