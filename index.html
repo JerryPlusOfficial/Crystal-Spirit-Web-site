@@ -6,7 +6,9 @@
     <title>晶灵在线</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
@@ -14,25 +16,25 @@
             min-height: 100vh;
             overflow-x: hidden;
             transition: background-color 0.3s, color 0.3s, background-image 0.3s;
-            position: relative; /* Added for positioning the overlay */
+            position: relative;
         }
 
-        .light-theme { 
-            background-color: #f0f0f0; 
-            color: #333; 
+        .light-theme {
+            background-color: #f0f0f0;
+            color: #333;
             background-image: url('https://t.mwm.moe/pc');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat; 
+            background-repeat: no-repeat;
         }
-        
-        .dark-theme { 
-            background-color: #181818; 
-            color: #f0f0f0; 
+
+        .dark-theme {
+            background-color: #181818;
+            color: #f0f0f0;
             background-image: url('https://t.mwm.moe/mp');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat; 
+            background-repeat: no-repeat;
         }
 
         body::before {
@@ -42,62 +44,99 @@
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.5; /* Adjust opacity for desired effect */
-            pointer-events: none; /* Allow clicks to pass through */
-            z-index: 1; /* Ensure it sits above the background but below content */
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: 1;
         }
 
         .light-theme::before {
-            background-color: rgba(255, 255, 255, 0.5); /* White semi-transparent overlay for light theme */
+            background-color: rgba(255, 255, 255, 0.5);
         }
 
         .dark-theme::before {
-            background-color: rgba(0, 0, 0, 0.5); /* Black semi-transparent overlay for dark theme */
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(0, 123, 255, 0.5);
-            padding: 10px;
+            background-color: rgba(0, 123, 255, 0.7);
+            padding: 15px 30px;
             color: white;
             transition: background-color 0.3s;
-            position: relative; /* Adjust positioning for navbar */
-            z-index: 2; /* Keep navbar above the overlay */
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .navbar .menu-icon { cursor: pointer; font-size: 24px; color: white; display: none; }
+        .navbar .menu-icon {
+            cursor: pointer;
+            font-size: 24px;
+            display: none;
+        }
+
         .nav-links {
             display: flex;
-            flex-direction: row;
             align-items: center;
             transition: max-height 0.3s ease, opacity 0.3s ease;
             overflow: hidden;
         }
 
-        .nav-links a, .theme-toggle {
+        .nav-links a,
+        .theme-toggle {
             color: inherit;
             text-decoration: none;
-            padding: 8px 15px;
+            padding: 10px 20px;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
-            margin: 5px;
+            margin: 0 10px;
+            font-weight: bold; 
         }
 
-        .nav-links a:hover, .theme-toggle:hover { background-color: rgba(0, 86, 179, 0.5); }
-        .content-section { padding: 20px; text-align: center; border-radius: 8px; max-width: 800px; margin: 20px auto; z-index: 2; /* Keep content above overlay */ }
+        .nav-links a:hover,
+        .theme-toggle:hover {
+            background-color: rgba(0, 86, 179, 0.7);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
-        .tabs { display: flex; justify-content: center; margin: 20px 0; }
-        .tab { 
-            position: relative; /* To position the overlay inside */
-            padding: 10px 20px; 
-            margin: 5px; 
-            background-color: rgba(0, 123, 255, 0.5); 
-            color: white; 
-            border-radius: 5px; 
-            cursor: pointer; 
-            overflow: hidden; /* Ensure the overlay does not overflow */
+        .content-section {
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            max-width: 800px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.8); 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+            z-index: 2;
+        }
+
+        .content-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .tab {
+            position: relative;
+            padding: 15px 30px;
+            margin: 5px;
+            background-color: rgba(0, 123, 255, 0.5);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: rgba(0, 123, 255, 0.7);
         }
 
         .tab::before {
@@ -107,34 +146,48 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.5); /* White overlay for light theme */
-            opacity: 0; /* Start with hidden overlay */
-            transition: opacity 0.3s; /* Smooth transition */
-            z-index: 1; /* Place behind text */
+            background-color: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
         }
 
         .tab:hover::before {
-            opacity: 1; /* Show overlay on hover */
+            opacity: 1;
         }
 
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8); 
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 10px;
+        }
 
-        /* 手机设备样式 */
+        .tab-content.active {
+            display: block;
+        }
+
         @media (max-width: 600px) {
-            .navbar .menu-icon { display: block; }
+            .navbar .menu-icon {
+                display: block;
+            }
+
             .nav-links {
-                max-height: 0; /* 初始隐藏 */
-                opacity: 0; /* 初始完全透明 */
-                transition: max-height 0.3s ease, opacity 0.3s ease; 
+                max-height: 0;
+                opacity: 0;
+                transition: max-height 0.3s ease, opacity 0.3s ease;
             }
 
             .nav-links.active {
-                max-height: 300px; /* 可根据菜单项高度调整 */
-                opacity: 1; /* 显示时可见 */
+                max-height: 300px;
+                opacity: 1;
             }
 
-            .nav-links a { margin: 10px 0; }
+            .nav-links a {
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
@@ -150,14 +203,13 @@
             <a href="#support">赞助和支持</a>
             <span class="theme-toggle" onclick="toggleTheme()">切换主题</span>
             <a href="https://github.com/JerryPlusOfficial/Crystal-Spirit-Web-site" target="_blank">
-                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:24px; vertical-align:middle;">
+                <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 24px; vertical-align: middle;">
             </a>
         </div>
     </nav>
 
     <section id="bot-service" class="content-section">
         <h2>晶灵bot服务</h2>
-        
         <div class="tabs">
             <div class="tab" onclick="showTabContent('xiaopu')">小朴系列</div>
             <div class="tab" onclick="showTabContent('zhenxun')">真寻系列</div>
@@ -180,21 +232,8 @@
             const isDark = body.classList.toggle('dark-theme');
             body.classList.toggle('light-theme');
 
-            // 主题切换时更新背景图像
             body.style.transition = 'background-image 0.3s';
-            if (isDark) {
-                body.style.backgroundImage = "url('https://t.mwm.moe/mp')";
-                // Change overlay color for dark theme
-                document.querySelectorAll('.tab').forEach(tab => {
-                    tab.querySelector('::before').style.backgroundColor = 'rgba(0, 0, 0, 0.5)'; // Change to black overlay for dark theme
-                });
-            } else {
-                body.style.backgroundImage = "url('https://t.mwm.moe/pc')";
-                // Change overlay color for light theme
-                document.querySelectorAll('.tab').forEach(tab => {
-                    tab.querySelector('::before').style.backgroundColor = 'rgba(255, 255, 255, 0.5)'; // Change to white overlay for light theme
-                });
-            }
+            body.style.backgroundImage = isDark ? "url('https://t.mwm.moe/mp')" : "url('https://t.mwm.moe/pc')";
         }
 
         function showTabContent(tabId) {
@@ -204,8 +243,7 @@
         }
 
         window.onload = function() {
-            // 确保在加载时设置背景
-            document.body.classList.contains('dark-theme') ? document.body.style.backgroundImage = "url('https://t.mwm.moe/mp')" : document.body.style.backgroundImage = "url('https://t.mwm.moe/pc')";
+            document.body.style.backgroundImage = document.body.classList.contains('dark-theme') ? "url('https://t.mwm.moe/mp')" : "url('https://t.mwm.moe/pc')";
         };
     </script>
 </body>
