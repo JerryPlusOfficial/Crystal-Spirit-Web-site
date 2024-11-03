@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <title>我的网页 - htmlpage.cn</title>
+    <meta charset="utf-8">
+    <title>晶灵在线</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,86 +11,136 @@
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Roboto, Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft Yahei", "Microsoft Jhenghei", sans-serif;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        
+
         .panel {
             color: rgb(51, 51, 51);
             font-weight: 100;
         }
-        
-        .description {
-            text-align: center;
+
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: rgba(0, 123, 255, 0.5);
+            padding: 10px;
+            color: white;
+        }
+
+        .navbar a, .theme-toggle {
+            color: white;
+            text-decoration: none;
             font-size: 1em;
-            font-weight: 500;
-            line-height: 1.8rem;
-            margin-bottom: 1rem;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-        
-        .wechat-group {
+
+        .navbar a:hover, .theme-toggle:hover {
+            background-color: rgba(0, 86, 179, 0.5);
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+        }
+
+        .content-section {
+            padding: 20px;
             text-align: center;
-            padding-bottom: 10px;
-        }
-        
-        .wechat-group img {
-            max-width: 220px;
-            height: auto;
+            background-color: rgba(255, 255, 255, 0.5);
             border-radius: 8px;
-            margin: 0 auto;
-            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
         }
-        
-        .welcome-img img {
-            width: 100%;
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
         }
-        
-        .bg-gradient-primary {
-            border-radius: 8px;
+
+        .tab {
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: rgba(0, 123, 255, 0.5);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .tab:hover {
+            background-color: rgba(0, 86, 179, 0.5);
+        }
+
+        .tab-content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div>
-        <div id="default-editor-page__placeholder" class="panel">
-            <link rel="stylesheet" href="css/plugins.css" />
-            <link rel="stylesheet" href="css/style.css" />
-            <section class="wrapper bg-gradient-primary">
-                <div class="container py-18 pt-md-14 pb-md-14">
-                    <div class="row text-center">
-                        <div class="col-lg-9 col-xxl-7 mx-auto">
-                            <h2 class="display-1 mb-4">网页施工中.....</h2>
-                            <p class="lead fs-24 lh-sm px-md-5 px-xl-15 px-xxl-10 mb-7">Jerry &amp; 阅杨 ©</p>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <span>
-                            <a href="https://ys.mihoyo.com/" target="_blank" class="btn btn-lg btn-primary rounded-pill mx-1">马上<span>使用</span></a>
-                        </span>
-                        <span>
-                            <a href="https://qm.qq.com/q/oDE8zMTOdG" class="btn btn-lg btn-outline-primary rounded-pill mx-1">联系我们</a>
-                        </span>
-                    </div>
-                    <div class="row mt-10">
-                        <div class="col-lg-8 mx-auto">
-                            <figure>
-                                <img src="img/i12.png" alt="" class="img-fluid" />
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="wrapper bg-gradient-primary">
-                <div class="container pt-14 pb-8">
-                    <div class="row text-center">
-                        <div class="col-lg-9 col-xxl-7 mx-auto">
-                            <h2 class="display-1 mb-4">加入交流群</h2>
-                            <p class="lead fs-24 lh-sm px-md-5 px-xl-15 px-xxl-10 mb-7">使用过程中遇到问题，可以在群里求助</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <div class="wechat-group pb-12"></div>
-            <div class="description">闽ICP</div>
+    <nav class="navbar">
+        <a href="#bot-service">晶灵bot服务</a>
+        <a href="#mc-server">雾雨MC服务器</a>
+        <a href="#about">关于</a>
+        <a href="#support">赞助和支持</a>
+        <a href="https://github.com/your-repo" target="_blank">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width:24px; vertical-align:middle;">
+        </a>
+        <span class="theme-toggle" onclick="toggleTheme()">切换主题</span>
+    </nav>
+
+    <section id="bot-service" class="content-section">
+        <h2>晶灵bot服务</h2>
+        
+        <div class="tabs">
+            <div class="tab" onclick="showTabContent('xiaopu')">小朴系列</div>
+            <div class="tab" onclick="showTabContent('zhenxun')">真寻系列</div>
+            <div class="tab" onclick="showTabContent('official')">官方bot系列</div>
         </div>
-    </div>
+
+        <div id="xiaopu" class="tab-content active">
+            <p>这是小朴系列的内容展示。</p>
+        </div>
+        <div id="zhenxun" class="tab-content">
+            <p>这是真寻系列的内容展示。</p>
+        </div>
+        <div id="official" class="tab-content">
+            <p>这是官方bot系列的内容展示。</p>
+        </div>
+    </section>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+        }
+
+        function setBackground() {
+            if (window.innerWidth > 768) {
+                document.body.style.backgroundImage = "url('https://t.mwm.moe/pc')";
+            } else {
+                document.body.style.backgroundImage = "url('https://t.mwm.moe/mp')";
+            }
+        }
+
+        function showTabContent(tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        window.onload = setBackground;
+        window.onresize = setBackground;
+    </script>
 </body>
 </html>
