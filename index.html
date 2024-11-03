@@ -163,10 +163,17 @@
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             margin-top: 10px;
+            opacity: 0; 
+            transition: opacity 0.5s ease; 
         }
 
         .tab-content.active {
             display: block;
+            opacity: 1; 
+        }
+
+        .dark-theme .tab-content p {
+            color: #000000; 
         }
 
         @media (max-width: 600px) {
@@ -197,10 +204,10 @@
             <i class="fas fa-bars"></i>
         </div>
         <div class="nav-links" id="nav-links">
-            <a href="#bot-service">晶灵bot服务</a>
-            <a href="#mc-server">雾雨MC服务器</a>
-            <a href="#about">关于</a>
-            <a href="#support">赞助和支持</a>
+            <a href="#bot-service" onclick="showTabContent('bot-service')">晶灵bot服务</a>
+            <a href="#mc-server" onclick="showTabContent('mc-server')">雾雨MC服务器</a>
+            <a href="#about" onclick="showTabContent('about')">关于</a>
+            <a href="#support" onclick="showTabContent('support')">赞助和支持</a>
             <span class="theme-toggle" onclick="toggleTheme()">切换主题</span>
             <a href="https://github.com/JerryPlusOfficial/Crystal-Spirit-Web-site" target="_blank">
                 <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" style="width: 24px; vertical-align: middle;">
@@ -208,20 +215,18 @@
         </div>
     </nav>
 
-    <section id="bot-service" class="content-section">
-        <h2>晶灵bot服务</h2>
-        <div class="tabs">
-            <div class="tab" onclick="showTabContent('xiaopu')">小朴系列</div>
-            <div class="tab" onclick="showTabContent('zhenxun')">真寻系列</div>
-            <div class="tab" onclick="showTabContent('official')">官方bot系列</div>
-        </div>
-
-        <div id="xiaopu" class="tab-content active"><p>这是小朴系列的内容展示。</p></div>
-        <div id="zhenxun" class="tab-content"><p>这是真寻系列的内容展示。</p></div>
-        <div id="official" class="tab-content"><p>这是官方bot系列的内容展示。</p></div>
+    <section id="content" class="content-section">
+        <h2>内容展示</h2>
+        <div id="bot-service" class="tab-content active"><p>这是晶灵bot服务的内容展示。</p></div>
+        <div id="mc-server" class="tab-content"><p>这是雾雨MC服务器的内容展示（内容待更新）。</p></div>
+        <div id="about" class="tab-content"><p>这是关于的内容展示（内容待更新）。</p></div>
+        <div id="support" class="tab-content"><p>这是赞助和支持的内容展示（内容待更新）。</p></div>
     </section>
 
     <script>
+        const darkBackgroundImage = new Image();
+        darkBackgroundImage.src = 'https://t.mwm.moe/mp';
+
         function toggleMenu() {
             const navLinks = document.getElementById('nav-links');
             navLinks.classList.toggle('active');
@@ -238,13 +243,19 @@
 
         function showTabContent(tabId) {
             const contents = document.querySelectorAll('.tab-content');
-            contents.forEach(content => content.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-        }
+            const targetContent = document.getElementById(tabId);
 
-        window.onload = function() {
-            document.body.style.backgroundImage = document.body.classList.contains('dark-theme') ? "url('https://t.mwm.moe/mp')" : "url('https://t.mwm.moe/pc')";
-        };
+            contents.forEach(content => {
+                content.classList.remove('active');
+                content.style.opacity = 0;
+            });
+
+            targetContent.classList.add('active');
+
+            setTimeout(() => {
+                targetContent.style.opacity = 1;
+            }, 50);
+        }
     </script>
 </body>
 </html>
