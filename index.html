@@ -111,12 +111,6 @@
             z-index: 2;
         }
 
-        .content-section h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
         .tabs {
             display: flex;
             justify-content: center;
@@ -207,6 +201,7 @@
             <a href="#bot-service" onclick="showTabContent('bot-service')">晶灵bot服务</a>
             <a href="#mc-server" onclick="showTabContent('mc-server')">雾雨MC服务器</a>
             <a href="#about" onclick="showTabContent('about')">关于</a>
+            <a href="#config" onclick="showTabContent('config')">日志</a>
             <a href="#support" onclick="showTabContent('support')">赞助和支持</a>
             <span class="theme-toggle" onclick="toggleTheme()">切换主题</span>
             <a href="https://github.com/JerryPlusOfficial/Crystal-Spirit-Web-site" target="_blank">
@@ -216,11 +211,26 @@
     </nav>
 
     <section id="content" class="content-section">
-        <h2>内容展示</h2>
-        <div id="bot-service" class="tab-content active"><p>这是晶灵bot服务的内容展示。</p></div>
-        <div id="mc-server" class="tab-content"><p>这是雾雨MC服务器的内容展示（内容待更新）。</p></div>
-        <div id="about" class="tab-content"><p>这是关于的内容展示（内容待更新）。</p></div>
-        <div id="support" class="tab-content"><p>这是赞助和支持的内容展示（内容待更新）。</p></div>
+        <div id="bot-service" class="tab-content active">
+            <h2>晶灵bot服务</h2>
+            <p>这是晶灵bot服务的内容展示。</p>
+        </div>
+        <div id="mc-server" class="tab-content">
+            <h2>雾雨MC服务器</h2>
+            <p>这是雾雨MC服务器的内容展示（内容待更新）。</p>
+        </div>
+        <div id="about" class="tab-content">
+            <h2>关于</h2>
+            <p>这是关于的内容展示（内容待更新）。</p>
+        </div>
+        <div id="support" class="tab-content">
+            <h2>赞助和支持</h2>
+            <p>这是赞助和支持的内容展示（内容待更新）。</p>
+        </div>
+        <div id="config" class="tab-content">
+            <h2>每日日志</h2>
+            <p>这里是每日日志</p>
+        </div>
     </section>
 
     <script>
@@ -257,5 +267,6 @@
             }, 50);
         }
     </script>
+    <noscript>windows.alert(抱歉，你的浏览器不支持JavaScript!)</noscript>
 </body>
 </html>
